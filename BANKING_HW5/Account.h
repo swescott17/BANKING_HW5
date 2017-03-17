@@ -145,7 +145,12 @@ class Savings_Account : public Account
 {
 public:
 	Savings_Account() {}
-	Savings_Account(Customer *cust, int id) {}
+	Savings_Account(Customer *cust, int id)
+		{
+			customer = cust;
+			account_number = id;
+		}
+	
 	void add_interest() //interest added to customer's current interest
 	{
 		double interest;
@@ -178,7 +183,11 @@ class Checking_Account : public Account
 {
 public:
 	Checking_Account() {}
-	Checking_Account(Customer *cust, int id) : customer(cust), account_number(id) {}
+	Checking_Account(Customer *cust, int id) 
+	{
+		customer = cust;
+		account_number = id;
+	}
 	void add_interest()
 	{
 		double interest;
