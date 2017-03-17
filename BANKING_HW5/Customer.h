@@ -12,9 +12,7 @@ as well as its own checking and overdraft fees.
 */
 class Customer // FIXME: Complete the implementation!
 {
-	friend Adult;
-	friend Senior;
-	friend Student;
+
 private:
 	string name; //customer's name
 	string address; //customer's address
@@ -76,22 +74,20 @@ public:
 		string customer_f = name.substr(0, 3); //first three letters of first name
 		int len = name.find(" ", 0); //finding the space between first and last name
 		string customer_l = name.substr(len + 1, 3); //first three letters of last name
-		string temp;
-		temp.append(customer_f);
-		temp.append(customer_l);
-		cout << temp << endl;
-		char letter = '\0';
-		for (int i = 0; i < temp.size(); ++i)
+		string temp; //empty string
+		temp.append(customer_f); //adds to a string first letters of the first name
+		temp.append(customer_l);  //adds first 3 letters of last name
+
+		char letter = '\0'; //empty char
+		for (int i = 0; i < temp.size(); ++i) //turns letters into ints
 		{
 			letter += temp[i];
 		}
 
-		customer_number = (int)letter;
-		customer_number *= age;
-		customer_number = customer_number % 1000;
+		customer_number = (int)letter; //turns char to int
+		customer_number *= age; //multiplies by age
+		customer_number = customer_number % 1000; //relays a 3 digit customer number
 
-
-		// Special
 	}
 };
 
@@ -104,6 +100,8 @@ private:
 	const double CHECK_CHARGE = 3.5;
 	const double OVERDRAFT_PENALTY = 22.5;
 public:
+	Senior() {}
+	Senior(string name, string address, int age, int telephone, int customer_id) {}
 	double get_cInterest()
 	{
 		return CHECK_INTEREST;
@@ -123,6 +121,8 @@ private:
 	const double CHECK_CHARGE = 5;
 	const double OVERDRAFT_PENALTY = 30;
 public:
+	Adult() {}
+	Adult(string name, string address, int age, int telephone, int customer_id) {}
 	double get_cInterest()
 	{
 		return CHECK_INTEREST;
@@ -142,21 +142,15 @@ private:
 	const double CHECK_CHARGE = 0.50;
 	const double OVERDRAFT_PENALTY = 25;
 public:
+	Student() {}
+	Student(string name, string address, int age, int telephone, int customer_id) {}
 	double get_cInterest()
 	{
 		return CHECK_INTEREST;
 	}
-	void set_cInterest(double m)
-	{
-		static_cast<double>(CHECK_INTEREST) = m;
-	}
 	double get_sInterest()
 	{
 		return SAVINGS_INTEREST;
-	}
-	void set_sInterest(double n)
-	{
-		static_cast<double>(SAVINGS_INTEREST) = n;
 	}
 };
 #endif

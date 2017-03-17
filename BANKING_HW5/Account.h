@@ -59,6 +59,7 @@ public:
 	Constructor requires a customer to create an account
 	Balance always starts with 0 when account is created.
 	*/
+	Account() {}
 	Account(Customer *cust, int id) : customer(cust), account_number(id), balance(0) {}
 
 	/**
@@ -143,6 +144,8 @@ public:
 class Savings_Account : public Account
 {
 public:
+	Savings_Account() {}
+	Savings_Account(Customer *cust, int id) : customer(cust), account_number(id) {}
 	void add_interest() //interest added to customer's current interest
 	{
 		double interest;
@@ -174,7 +177,8 @@ public:
 class Checking_Account : public Account
 {
 public:
-
+	Checking_Account() {}
+	Checking_Account(Customer *cust, int id) : customer(cust), account_number(id) {}
 	void add_interest()
 	{
 		double interest;

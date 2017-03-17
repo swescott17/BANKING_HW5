@@ -50,6 +50,13 @@ void Add_Account(Bank &bank)
 		string telephone;
 		cout << "Telephone Number: ";
 		getline(cin, telephone);
+		while (!cin.good())
+		{
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');
+			cout << "Telephone Number: ";
+			getline(cin, telephone);
+		}
 		cout << "Age: ";
 		int age;
 		cin >> age;
@@ -148,6 +155,7 @@ int main()
 		string	menu_string = "Please choose an action below:\n";
 		menu_string += "0 - Add Account\n";
 		menu_string += "1 - List Accounts\n";
+		menu_string += "2 - Make deposit\n";
 		menu_string += "3 - Make withdrawal\n";
 		menu_string += "4 - Quit\n";
 		menu_string += "Enter: ";
