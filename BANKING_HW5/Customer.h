@@ -29,6 +29,7 @@ public:
 		address = address_n;
 		age = age_n;
 		telephone_number = tele;
+		set_customer_number();
 		//Special code for setting customer number
 	}
 	virtual double get_sInterest() = 0;
@@ -71,6 +72,21 @@ public:
 	}
 	void set_customer_number()
 	{
+		string customer_f = name.substr(1, 3); //first three letters of first name
+		int len = name.find(" ", 0); //finding the space between first and last name
+		string customer_l = name.substr(len, 3); //first three letters of last name
+		string temp;
+		temp.append(customer_f);
+		temp.append(customer_l);
+
+		char letter;
+		for (int i = 0; i < temp.size(); ++i)
+		{
+			letter += temp[i];
+		}
+
+		customer_number = (int)letter;
+
 
 		// Special
 	}
