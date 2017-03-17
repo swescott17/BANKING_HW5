@@ -20,18 +20,19 @@ private:
 	string telephone_number; //customer's telephone number
 	int customer_number; //generated customer number
 public:
-	Customer() {}
-	Customer(string name_n, string address_n, int age_n, string tele)
+	Customer() {} //regular constructor
+	Customer(string name_n, string address_n, int age_n, string tele, int customer_num) //overloaded constructor
 	{
 		name = name_n;
 		address = address_n;
 		age = age_n;
 		telephone_number = tele;
-		set_customer_number();
-		//Special code for setting customer number
+		customer_number = customer_num;
 	}
-	virtual double get_sInterest() = 0;
-	virtual double get_cInterest() = 0;
+	virtual double get_sInterest() = 0; //gets the interest for savings accounts
+	virtual double get_cInterest() = 0; //gets the interest for checking accounts
+	
+	//Standard modifiers
 	string get_name()
 	{
 		return name;
@@ -68,7 +69,7 @@ public:
 	{
 		return customer_number;
 	}
-	void set_customer_number()
+	void set_customer_number() //Something extra....
 	{
 
 		string customer_f = name.substr(0, 3); //first three letters of first name
@@ -95,13 +96,18 @@ class Senior : public Customer
 {
 private:
 	friend Customer;
+	string name; //customer's name
+	string address; //customer's address
+	int age; //customer's age
+	string telephone_number; //customer's telephone number
+	int customer_number; //generated customer number
 	const double SAVINGS_INTEREST = 0.04;
 	const double CHECK_INTEREST = 0.02;
 	const double CHECK_CHARGE = 3.5;
 	const double OVERDRAFT_PENALTY = 22.5;
 public:
 	Senior() {}
-	Senior(string name, string address, int age, string telephone, int customer_id) {}
+	Senior(string name_n, string address_n, int age_n, string telephone_n, int customer_id_n) : name(name_n), address(address_n), age(age_n), telephone_number(telephone_n), customer_number(customer_id_n) {}
 	double get_cInterest()
 	{
 		return CHECK_INTEREST;
@@ -115,14 +121,19 @@ public:
 class Adult : public Customer
 {
 private:
-	friend Customer;
+	//friend Customer;
+	string name; //customer's name
+	string address; //customer's address
+	int age; //customer's age
+	string telephone_number; //customer's telephone number
+	int customer_number; //generated customer number
 	const double SAVINGS_INTEREST = 0.04;
 	const double CHECK_INTEREST = 0.02;
 	const double CHECK_CHARGE = 5;
 	const double OVERDRAFT_PENALTY = 30;
 public:
 	Adult() {}
-	Adult(string name, string address, int age, string telephone, int customer_id) {}
+	Adult(string name_n, string address_n, int age_n, string telephone_n, int customer_id_n) : name(name_n), address(address_n), age(age_n), telephone_number(telephone_n), customer_number(customer_id_n) {}
 	double get_cInterest()
 	{
 		return CHECK_INTEREST;
@@ -136,14 +147,20 @@ public:
 class Student : public Customer
 {
 private:
-	friend Customer;
+	//friend Customer;
+	string name; //customer's name
+	string address; //customer's address
+	int age; //customer's age
+	string telephone_number; //customer's telephone number
+	int customer_number; //generated customer number
 	const double SAVINGS_INTEREST = 0.03;
 	const double CHECK_INTEREST = 0.01;
 	const double CHECK_CHARGE = 0.50;
 	const double OVERDRAFT_PENALTY = 25;
 public:
 	Student() {}
-	Student(string name, string address, int age, string telephone, int customer_id) {}
+	Student(string name_n, string address_n, int age_n, string telephone_n, int customer_id_n) : name(name_n), address(address_n), age(age_n), telephone_number(telephone_n), customer_number(customer_id_n) {};
+
 	double get_cInterest()
 	{
 		return CHECK_INTEREST;

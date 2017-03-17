@@ -143,7 +143,12 @@ public:
 
 class Savings_Account : public Account
 {
+private:
+	Customer* customer;		// The customer who owns this account
+	double balance;			// The available balance in this account
+	int account_number;		// A unique number identifying this account
 public:
+
 	Savings_Account() {}
 	Savings_Account(Customer *cust, int id)
 		{
@@ -181,6 +186,10 @@ public:
 
 class Checking_Account : public Account
 {
+private:
+	Customer* customer;		// The customer who owns this account
+	double balance;			// The available balance in this account
+	int account_number;		// A unique number identifying this account
 public:
 	Checking_Account() {}
 	Checking_Account(Customer *cust, int id) 

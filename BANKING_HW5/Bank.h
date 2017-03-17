@@ -1,6 +1,7 @@
 #ifndef BANK_H_
 #define BANK_H_
 #include <vector>
+#include <iostream>
 #include <stdexcept>
 #include "Account.h"
 #include "Customer.h"
@@ -71,13 +72,11 @@ private:
 	Account * add_account(Customer *cust, std::string account_type)
 	{
 		Account *acct = NULL;
-
 		// FIXME: Factory method for creating a Account object (could be a Saving_Account or a Checking_Account).
 		if (account_type == "savings")
 			acct = new Savings_Account(cust, account_id);
 		else
 			acct = new Checking_Account(cust, account_id);
-
 		accounts.push_back(acct);
 		acct->set_account(account_id);
 		account_id++;
@@ -99,9 +98,18 @@ public:
 	Account* add_account(std::string name, std::string account_type)
 	{
 		Customer *cust = find_customer(name);
+		Account *acct = NULL;
 		if (cust == NULL)
 			return NULL;
-		return add_account(cust, account_type);
+		// FIXME: Factory method for creating a Account object (could be a Saving_Account or a Checking_Account).
+		if (account_type == "savings")
+			acct = new Savings_Account(cust, account_id);
+		if (account_type == "checking")
+			acct = new Checking_Account(cust, account_id);
+		accounts.push_back(acct);
+		acct->set_account(account_id);
+		account_id++;
+		return acct;
 	}
 
 	/**
@@ -121,15 +129,20 @@ public:
 
 		// FIXME: Depending on the customer type, we want to create an Adult, Senior, or Student object.
 		if (cust_type == "adult")
+		{
 			cust = new Adult(name, address, age, telephone, customer_id);
+		}
 		else if (cust_type == "senior")
+		{
 			cust = new Senior(name, address, age, telephone, customer_id);
+		}
 		else
+		{
 			cust = new Student(name, address, age, telephone, customer_id);
-
+		}
 		customers.push_back(cust);
 		customer_id++;
-
+		
 		return add_account(cust, account_type);
 	}
 
@@ -169,14 +182,18 @@ public:
 	std::vector<int> get_account(std::string name)
 	{
 		std::vector<int> user_accounts;
-
+		/*int counter = 0;
 		// FIXME: Find all the accounts belonging to a customer name and add it to the vector of account numbers.
 		for (int i = 0; i < accounts.size(); i++) {
-			Account * acc = accounts[i];
-			if (acc->get_customer()->get_name() == name) {
-				user_accounts.push_back(acc->get_account());
+			Customer *cust = accounts[i]->get_customer();
+			
+			 cout << cust->get_name() << endl;
+			if (accounts[i]->get_customer()->get_name() == name) {
+				cout << "Found." << endl;
+				user_accounts.push_back(accounts[i]->get_account()); //pops back the account number in the user accounts
+				counter++;
 			}
-		}
+		}*/
 
 		return user_accounts;
 	}
