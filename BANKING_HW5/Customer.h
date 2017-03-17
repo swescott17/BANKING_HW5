@@ -72,20 +72,21 @@ public:
 	}
 	void set_customer_number()
 	{
-		string customer_f = name.substr(1, 3); //first three letters of first name
+
+		string customer_f = name.substr(0, 3); //first three letters of first name
 		int len = name.find(" ", 0); //finding the space between first and last name
-		string customer_l = name.substr(len, 3); //first three letters of last name
+		string customer_l = name.substr(len + 1, 3); //first three letters of last name
 		string temp;
 		temp.append(customer_f);
 		temp.append(customer_l);
-
-		char letter;
+		cout << temp << endl;
+		char letter = '\0';
 		for (int i = 0; i < temp.size(); ++i)
 		{
 			letter += temp[i];
 		}
 
-		customer_number = (int)letter;
+		int customer_number = (int)letter;
 
 
 		// Special
