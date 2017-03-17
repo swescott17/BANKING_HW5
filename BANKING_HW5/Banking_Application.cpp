@@ -50,13 +50,8 @@ void Add_Account(Bank &bank)
 		string telephone;
 		cout << "Telephone Number: ";
 		getline(cin, telephone);
-		while (!cin.good())
-		{
-			cin.clear();
-			cin.ignore(INT_MAX, '\n');
 			cout << "Telephone Number: ";
 			getline(cin, telephone);
-		}
 		cout << "Age: ";
 		int age;
 		cin >> age;

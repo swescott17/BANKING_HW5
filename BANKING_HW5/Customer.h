@@ -1,7 +1,7 @@
 #ifndef CUSTOMER_H_
 #define CUSTOMER_H_
 #include <string>
-
+using namespace std;
 /**
 The Bank has Customers.  Each Customer has a name, address, age, and telephone number.
 Additionally, there are specialized types of Customers: Adult, Senior, and Student.
@@ -17,11 +17,11 @@ private:
 	string name; //customer's name
 	string address; //customer's address
 	int age; //customer's age
-	int telephone_number; //customer's telephone number
+	string telephone_number; //customer's telephone number
 	int customer_number; //generated customer number
 public:
 	Customer() {}
-	Customer(string name_n, string address_n, int age_n, int tele)
+	Customer(string name_n, string address_n, int age_n, string tele)
 	{
 		name = name_n;
 		address = address_n;
@@ -56,7 +56,7 @@ public:
 	{
 		age = newage;
 	}
-	int get_telephone_number()
+	string get_telephone_number()
 	{
 		return telephone_number;
 	}
@@ -101,7 +101,7 @@ private:
 	const double OVERDRAFT_PENALTY = 22.5;
 public:
 	Senior() {}
-	Senior(string name, string address, int age, int telephone, int customer_id) {}
+	Senior(string name, string address, int age, string telephone, int customer_id) {}
 	double get_cInterest()
 	{
 		return CHECK_INTEREST;
@@ -122,7 +122,7 @@ private:
 	const double OVERDRAFT_PENALTY = 30;
 public:
 	Adult() {}
-	Adult(string name, string address, int age, int telephone, int customer_id) {}
+	Adult(string name, string address, int age, string telephone, int customer_id) {}
 	double get_cInterest()
 	{
 		return CHECK_INTEREST;
@@ -143,7 +143,7 @@ private:
 	const double OVERDRAFT_PENALTY = 25;
 public:
 	Student() {}
-	Student(string name, string address, int age, int telephone, int customer_id) {}
+	Student(string name, string address, int age, string telephone, int customer_id) {}
 	double get_cInterest()
 	{
 		return CHECK_INTEREST;

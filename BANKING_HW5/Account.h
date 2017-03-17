@@ -5,7 +5,7 @@
 #include <sstream>
 #include "Customer.h"
 #include "Transaction.h"
-
+using namespace std;
 /**
 The Bank has Accounts and an Account belongs to a Customer.
 Additionally, there are specialized types of accounts: Checking_Account and Savings_Account.
@@ -145,7 +145,7 @@ class Savings_Account : public Account
 {
 public:
 	Savings_Account() {}
-	Savings_Account(Customer *cust, int id) : customer(cust), account_number(id) {}
+	Savings_Account(Customer *cust, int id) {}
 	void add_interest() //interest added to customer's current interest
 	{
 		double interest;
