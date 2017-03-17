@@ -86,7 +86,9 @@ public:
 			letter += temp[i];
 		}
 
-		int customer_number = (int)letter;
+		customer_number = (int)letter;
+		customer_number *= age;
+		customer_number = customer_number % 1000;
 
 
 		// Special
